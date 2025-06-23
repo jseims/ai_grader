@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Essay Grade Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Essay Grade Predictor</h1>
+            <button id="newSessionBtn" class="new-session-btn">New Session</button>
+        </header>
+
+        <div class="main-content">
+            <div class="input-section">
+                <!-- Rubric Input -->
+                <div class="input-card" id="rubricCard">
+                    <div class="card-header" onclick="toggleCard('rubricCard')">
+                        <h3>Teacher's Grading Rubric <span class="required">*</span></h3>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="card-content">
+                        <textarea 
+                            id="rubricInput" 
+                            placeholder="Enter your teacher's grading rubric here..."
+                            rows="6"
+                        ></textarea>
+                    </div>
+                </div>
+
+                <!-- Examples Input -->
+                <div class="input-card" id="examplesCard">
+                    <div class="card-header" onclick="toggleCard('examplesCard')">
+                        <h3>Previous Examples (Optional)</h3>
+                        <span class="toggle-icon">▼</span>
+                    </div>
+                    <div class="card-content">
+                        <div id="examplesList">
+                            <!-- Examples will be added here dynamically -->
+                        </div>
+                        <button type="button" id="addExampleBtn" class="add-btn">+ Add Example</button>
+                    </div>
+                </div>
+
+                <!-- Essay Input -->
+                <div class="input-card" id="essayCard">
+                    <div class="card-header">
+                        <h3>Your Essay <span class="required">*</span></h3>
+                    </div>
+                    <div class="card-content">
+                        <textarea 
+                            id="essayInput" 
+                            placeholder="Paste your essay here..."
+                            rows="12"
+                        ></textarea>
+                        <button id="analyzeBtn" class="analyze-btn" disabled>Analyze Essay</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Section -->
+            <div class="results-section" id="resultsSection" style="display: none;">
+                <div class="result-card">
+                    <div class="grade-prediction" id="gradePrediction">
+                        <!-- Grade prediction will be displayed here -->
+                    </div>
+                </div>
+
+                <div class="result-card">
+                    <h3>Strategic Advice</h3>
+                    <div id="strategicAdvice">
+                        <!-- Strategic advice will be displayed here -->
+                    </div>
+                </div>
+
+                <div class="result-card">
+                    <h3>Line-by-Line Feedback</h3>
+                    <div id="lineFeedback">
+                        <!-- Line-by-line feedback will be displayed here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loading State -->
+            <div class="loading" id="loadingState" style="display: none;">
+                <div class="loading-spinner"></div>
+                <p>Analyzing your essay...</p>
+            </div>
+
+            <!-- Error State -->
+            <div class="error-message" id="errorMessage" style="display: none;">
+                <!-- Error messages will be displayed here -->
+            </div>
+
+            <!-- API Debug Section -->
+            <div class="debug-section" id="debugSection" style="display: none;">
+                <div class="debug-card">
+                    <h3>API Debug Information</h3>
+                    <div class="debug-content">
+                        <div class="debug-item">
+                            <h4>Outgoing Query to Anthropic API:</h4>
+                            <pre id="debugQuery" class="debug-text"></pre>
+                        </div>
+                        <div class="debug-item">
+                            <h4>Raw API Response:</h4>
+                            <pre id="debugResponse" class="debug-text"></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
