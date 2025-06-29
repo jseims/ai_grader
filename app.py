@@ -121,4 +121,4 @@ if __name__ == '__main__':
     if not os.getenv('ANTHROPIC_API_KEY'):
         print("Warning: ANTHROPIC_API_KEY environment variable not set")
     port = int(os.environ.get('PORT', 5000))
-    app.run(debug=False, host='0.0.0.0', port=port)
+    app.run(debug=True, host='0.0.0.0', port=port)
