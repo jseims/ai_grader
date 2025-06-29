@@ -1,5 +1,7 @@
 # Essay Grade Predictor
 
+testing...
+
 A web application that helps high school students predict their essay grades and receive improvement suggestions based on their teacher's rubric and previous graded examples.
 
 ## Features
